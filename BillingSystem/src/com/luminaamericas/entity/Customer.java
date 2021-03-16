@@ -41,4 +41,11 @@ public class Customer
 	{
 		return address;
 	}
+
+	@Override
+	public String toString() 
+	{
+		return "Número: " + number + "\n" + idType.name() + ": " + id + 
+				"\n" + "Nombre: " + fullName + "\n" + "Dirección: " + address;
+	}
 }

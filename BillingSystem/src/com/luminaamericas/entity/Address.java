@@ -16,6 +16,13 @@ public class Address
 		this.apartment = apartment;
 		this.city = city;
 	}
+	
+	public Address(String street, int number, String city) 
+	{
+		this.street = street;
+		this.number = number;
+		this.city = city;
+	}
 
 	public String getStreet() 
 	{
@@ -40,5 +47,20 @@ public class Address
 	public String getCity() 
 	{
 		return city;
+	}
+
+	@Override
+	public String toString() 
+	{
+		return street + " " + number + apartmentToString() + ", " + city;
+	}
+	
+	private String apartmentToString()
+	{
+		if(floor != null & apartment != null)
+		{
+			return ", " + floor + " " + apartment;
+		}
+		return "";
 	}
 }
