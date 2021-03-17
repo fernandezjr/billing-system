@@ -1,4 +1,4 @@
-package com.luminaamericas.entity;
+package com.luminaamericas.model.entity;
 
 public class Product 
 {
@@ -26,5 +26,11 @@ public class Product
 	public double getPrice() 
 	{
 		return price;
+	}
+
+	@Override
+	public String toString() 
+	{
+		return description + " Precio Unitario: " + price;
 	}
 }

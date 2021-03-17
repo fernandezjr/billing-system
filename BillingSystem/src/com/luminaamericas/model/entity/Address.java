@@ -1,4 +1,4 @@
-package com.luminaamericas.entity;
+package com.luminaamericas.model.entity;
 
 public class Address 
 {

@@ -1,7 +1,8 @@
-package com.luminaamericas.entity;
+package com.luminaamericas.model.entity;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Order 
@@ -42,5 +43,26 @@ public class Order
 	public void addProduct(Product newProduct, int quantity)
 	{
 		products.put(newProduct, quantity);
+	}
+
+	@Override
+	public String toString() 
+	{
+		return "Pedido: " + number + "\n" + "Fecha: " + date + "\n" + 
+				customer + "\n" + "Productos:\n" + productsToString();
+	}
+	
+	private String productsToString()
+	{
+		String productsList = "";
+		Iterator<Map.Entry<Product, Integer>> iterator = products.entrySet().iterator();
+		
+		while (iterator.hasNext()) 
+		{
+			Map.Entry<Product, Integer> pair = (Map.Entry<Product, Integer>) iterator.next();
+			productsList += pair.getKey() + " Cantidad: " + pair.getValue() + "\n";
+		}
+		
+		return productsList;
 	}
 }
