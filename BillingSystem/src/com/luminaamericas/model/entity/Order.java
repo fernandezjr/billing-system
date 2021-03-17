@@ -48,8 +48,9 @@ public class Order
 	@Override
 	public String toString() 
 	{
-		return "Pedido: " + number + "\n" + "Fecha: " + date + "\n" + 
-				customer + "\n" + "Productos:\n" + productsToString();
+		return "Pedido: " + number + "\nFecha: " + date + "\n" + 
+				customer + "\nProductos:\n" + productsToString() + "Total: " + 
+				getTotal() + "\n";
 	}
 	
 	private String productsToString()
@@ -64,5 +65,19 @@ public class Order
 		}
 		
 		return productsList;
+	}
+	
+	private double getTotal()
+	{
+		double total = 0;
+		Iterator<Map.Entry<Product, Integer>> iterator = products.entrySet().iterator();
+		
+		while (iterator.hasNext()) 
+		{
+			Map.Entry<Product, Integer> pair = (Map.Entry<Product, Integer>) iterator.next();
+			total += pair.getKey().getPrice() * pair.getValue();
+		}
+		
+		return total;
 	}
 }

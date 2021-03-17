@@ -45,7 +45,7 @@ public class Customer
 	@Override
 	public String toString() 
 	{
-		return "Cleinte: " + number + "\n" + idType.name() + ": " + id + 
-				"\n" + "Nombre: " + fullName + "\n" + "Dirección: " + address;
+		return "Cliente: " + number + "\n" + idType.name() + ": " + id + 
+				"\nNombre: " + fullName + "\nDirección: " + address;
 	}
 }
