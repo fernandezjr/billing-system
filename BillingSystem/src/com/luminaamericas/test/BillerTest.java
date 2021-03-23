@@ -13,7 +13,7 @@ import com.luminaamericas.model.entity.Product;
 
 public class BillerTest 
 {
-	public static void main(String[] args) 
+	/*public static void main(String[] args) 
 	{
 		Product rice = new Product(1, "Arroz Arcor 500 grs", 55);
 		Product water = new Product(2, "Agua Villavicencio 2L", 90.50);
@@ -39,5 +39,5 @@ public class BillerTest
 		biller.addOrder(otherOrder);
 		
 		biller.printOrders();
-	}
+	}*/
 }
