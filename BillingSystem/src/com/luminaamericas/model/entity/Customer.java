@@ -7,14 +7,16 @@ public class Customer
 	private IdType idType;
 	private String fullName;
 	private Address address;
+	private IvaCategory ivaCategory;
 	
-	public Customer(int number, long id, IdType idType, String fullName, Address address) 
+	public Customer(int number, long id, IdType idType, String fullName, Address address, IvaCategory ivaCategory) 
 	{
 		this.number = number;
 		this.id = id;
 		this.idType = idType;
 		this.fullName = fullName;
 		this.address = address;
+		this.ivaCategory = ivaCategory;
 	}
 
 	public int getNumber() 
@@ -41,11 +43,16 @@ public class Customer
 	{
 		return address;
 	}
+	
+	public IvaCategory getIvaCategory() 
+	{
+		return ivaCategory;
+	}
 
 	@Override
 	public String toString() 
 	{
 		return "Cliente: " + number + "\n" + idType.name() + ": " + id + 
-				"\nNombre: " + fullName + "\nDirección: " + address;
+				"\nNombre: " + fullName + "\nDirección: " + address + "\n" + ivaCategory;
 	}
 }

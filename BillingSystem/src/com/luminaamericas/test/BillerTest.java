@@ -8,6 +8,7 @@ import com.luminaamericas.model.Biller;
 import com.luminaamericas.model.entity.Address;
 import com.luminaamericas.model.entity.Customer;
 import com.luminaamericas.model.entity.IdType;
+import com.luminaamericas.model.entity.IvaCategory;
 import com.luminaamericas.model.entity.Order;
 import com.luminaamericas.model.entity.Product;
 
@@ -23,7 +24,7 @@ public class BillerTest
 		
 		Address house = new Address("Lavallol", 3045, "Tortuguitas");
 		Customer rodrigo = new Customer(1, 36824421, IdType.DNI, "Rodrigo Fernández", 
-				house);
+				house, IvaCategory.B);
 		
 		Order marketOrder = new Order(1, date, rodrigo);
 		

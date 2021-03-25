@@ -67,7 +67,7 @@ public class Order
 		return productsList;
 	}
 	
-	private double getTotal()
+	public double getTotal()
 	{
 		double total = 0;
 		Iterator<Map.Entry<Product, Integer>> iterator = products.entrySet().iterator();
@@ -79,5 +79,30 @@ public class Order
 		}
 		
 		return total;
+	}
+	
+	public Map<Product, Detail> getProductsDetail()
+	{
+		Map<Product, Detail> productsDetails = new HashMap<Product, Detail>();
+		Iterator<Map.Entry<Product, Integer>> iterator = products.entrySet().iterator();
+		
+		while (iterator.hasNext()) 
+		{
+			Map.Entry<Product, Integer> pair = (Map.Entry<Product, Integer>) iterator.next();
+			
+			Product product = pair.getKey();
+			double unitPrice = product.getPrice();
+			double ivaPercentage = customer.getIvaCategory().getPercentage();
+			int quantity = pair.getValue();
+			double netPrice = unitPrice * quantity;
+			double sellingPrice = netPrice + ivaPercentage;
+			
+			Detail detail = new Detail(ivaPercentage, pair.getValue(), sellingPrice, netPrice, 
+					ivaPercentage, unitPrice);
+			
+			productsDetails.put(product, detail);
+		}
+		
+		return productsDetails;
 	}
 }
