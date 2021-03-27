@@ -42,5 +42,6 @@ public class BillerTest
 		biller.bill();
 		
 		biller.printInvoices();
+		biller.generateDailyReport();
 	}
 }

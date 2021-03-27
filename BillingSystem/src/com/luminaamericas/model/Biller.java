@@ -3,6 +3,7 @@ package com.luminaamericas.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.luminaamericas.file.ReportGenerator;
 import com.luminaamericas.model.entity.Invoice;
 import com.luminaamericas.model.entity.Order;
 
@@ -44,5 +45,10 @@ public class Biller
 		 {
 			System.out.println(invoice);
 		}
+	}
+	
+	public void generateDailyReport()
+	{
+		ReportGenerator.generate(invoices);
 	}
 }
