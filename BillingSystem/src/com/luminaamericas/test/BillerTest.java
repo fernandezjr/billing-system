@@ -39,6 +39,8 @@ public class BillerTest
 		biller.addOrder(marketOrder);
 		biller.addOrder(otherOrder);
 		
-		biller.printOrders();
+		biller.bill();
+		
+		biller.printInvoices();
 	}
 }
