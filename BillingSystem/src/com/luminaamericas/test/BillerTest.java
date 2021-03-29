@@ -1,11 +1,15 @@
 package com.luminaamericas.test;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import com.luminaamericas.model.Biller;
+import com.luminaamericas.model.IBiller;
+import com.luminaamericas.model.OrderNotFoundException;
 import com.luminaamericas.model.entity.Address;
+import com.luminaamericas.model.entity.Biller;
 import com.luminaamericas.model.entity.Customer;
 import com.luminaamericas.model.entity.IdType;
 import com.luminaamericas.model.entity.IvaCategory;
@@ -14,7 +18,7 @@ import com.luminaamericas.model.entity.Product;
 
 public class BillerTest 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws OrderNotFoundException 
 	{
 		Product rice = new Product(1, "Arroz Arcor 500 grs", 55);
 		Product water = new Product(2, "Agua Villavicencio 2L", 90.50);
@@ -35,13 +39,26 @@ public class BillerTest
 		
 		otherOrder.addProduct(water, 21);
 		
-		Biller biller = new Biller();
-		biller.addOrder(marketOrder);
-		biller.addOrder(otherOrder);
+		IBiller biller = new Biller();
 		
+		Collection<Order> orders = new ArrayList<Order>();
+		
+		orders.add(marketOrder);
+		orders.add(otherOrder);
+		
+		biller.loadTransactions(orders);
+		
+//		Genera Nota de Credito
+		biller.bill();
+		biller.cancelOrder(otherOrder);
 		biller.bill();
 		
+//		Elimina la orden
+//		biller.cancelOrder(otherOrder);
+//		biller.bill(orders);
+//		
 		biller.printInvoices();
+		System.out.println("Ingresos: $" + biller.getTakings());
 		biller.generateDailyReport();
 	}
 }

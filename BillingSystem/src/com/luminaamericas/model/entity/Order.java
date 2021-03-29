@@ -1,5 +1,6 @@
 package com.luminaamericas.model.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,6 +12,7 @@ public class Order
 	private Date date;
 	private Customer customer;
 	private Map<Product, Integer> products;
+	private OrderState state;
 	
 	public Order(int number, Date date, Customer customer) 
 	{
@@ -18,6 +20,7 @@ public class Order
 		this.date = date;
 		this.customer = customer;
 		products = new HashMap<Product, Integer>();
+		state = new PendingOrder();
 	}
 
 	public int getNumber() 
@@ -44,13 +47,47 @@ public class Order
 	{
 		products.put(newProduct, quantity);
 	}
+	
+	public void removeProduct(Product productToRemove)
+	{
+		products.remove(productToRemove);
+	}
+	
+	public void changeQuantity(Product product, int newQuantity)
+	{
+		products.replace(product, newQuantity);
+	}
+	
+	public OrderState getState() 
+	{
+		return state;
+	}
+
+	public void setState(OrderState state) 
+	{
+		this.state = state;
+	}
 
 	@Override
 	public String toString() 
 	{
-		return "Pedido: " + number + "\nFecha: " + date + "\n" + 
-				customer + "\nProductos:\n" + productsToString() + "Total: " + 
-				getTotal() + "\n";
+		String productsSeparator = "\n-------- Productos --------\n";
+		return "Pedido #" + number + "\tFecha: " 
+				+ new SimpleDateFormat("dd/MM/yyyy").format(date) + "\n" 
+				+ customer +  productsSeparator + productsToString() 
+				+ "Total: " + getTotal() + "\n";
+	}
+	
+	@Override
+	public boolean equals(Object other) 
+	{
+		if (other instanceof Order) 
+		{
+			Order otherOrder = (Order) other;
+			return (this.number == otherOrder.number);
+		}
+		
+		return false;
 	}
 	
 	private String productsToString()

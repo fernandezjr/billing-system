@@ -9,7 +9,8 @@ public class Customer
 	private Address address;
 	private IvaCategory ivaCategory;
 	
-	public Customer(int number, long id, IdType idType, String fullName, Address address, IvaCategory ivaCategory) 
+	public Customer(int number, long id, IdType idType, String fullName, Address address, 
+			IvaCategory ivaCategory) 
 	{
 		this.number = number;
 		this.id = id;
@@ -52,7 +53,7 @@ public class Customer
 	@Override
 	public String toString() 
 	{
-		return "Cliente: " + number + "\n" + idType.name() + ": " + id + 
-				"\nNombre: " + fullName + "\nDirección: " + address + "\n" + ivaCategory;
+		return "Cliente #" + number + "\tNombre: " + fullName + "\t" 
+				+ idType.name() + ": " + id +  "\tDirección: " + address + "\t" + ivaCategory;
 	}
 }

@@ -1,5 +1,6 @@
 package com.luminaamericas.model.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Header 
@@ -10,10 +11,10 @@ public class Header
 	private String letter;
 	private Customer customer;
 	
-	public Header(int number, Date dateOfIssue, String emissionCode, String letter, Customer customer) 
+	public Header(int number, String emissionCode, String letter, Customer customer) 
 	{
 		this.number = number;
-		this.dateOfIssue = dateOfIssue;
+		this.dateOfIssue = new Date();
 		this.emissionCode = emissionCode;
 		this.letter = letter;
 		this.customer = customer;
@@ -47,7 +48,8 @@ public class Header
 	@Override
 	public String toString() 
 	{
-		return "Número: " + number + "\nFecha: " + dateOfIssue + "\nCódigo de Emisión: " 
-				+ emissionCode + "\nTipo: " + letter + "\n";
+		return "Factura #" + number + "\tFecha: " 
+				+ new SimpleDateFormat("dd/MM/yyyy").format(dateOfIssue) 
+				+ "\nCódigo de Emisión: " + emissionCode + "\tTipo: " + letter + "\n";
 	}
 }

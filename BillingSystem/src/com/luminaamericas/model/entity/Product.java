@@ -31,6 +31,6 @@ public class Product
 	@Override
 	public String toString() 
 	{
-		return description + " Precio Unitario: " + price;
+		return description;
 	}
 }

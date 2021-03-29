@@ -1,23 +1,21 @@
 package com.luminaamericas.model.entity;
 
-public class CreditNote 
+public class CreditNote extends AbstractInvoice 
 {
-	private Header header;
-	private Footer footer;
-	
-	public CreditNote(Header header, Footer footer) 
+	public CreditNote(Order order) 
 	{
-		this.header = header;
-		this.footer = footer;
+		super(order);
 	}
 
-	public Header getHeader() 
+	@Override
+	public double bill() 
 	{
-		return header;
+		return footer.getTotal() * -1;
 	}
 
-	public Footer getFooter() 
+	@Override
+	public String toString() 
 	{
-		return footer;
-	}	
+		return header + "" +  footer;
+	}
 }

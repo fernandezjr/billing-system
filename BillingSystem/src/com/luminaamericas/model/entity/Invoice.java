@@ -1,58 +1,48 @@
 package com.luminaamericas.model.entity;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Invoice 
+public class Invoice extends AbstractInvoice
 {
-	private Header header;
 	private Map<Product, Detail> products;
-	private Footer footer;
+	private double totalIVA;
 	
 	public Invoice(Order order)
 	{
-		Customer customer = order.getCustomer();
-		this.header = new Header(1, new GregorianCalendar(2021, Calendar.MARCH, 25).getTime(), 
-				"ABC123", customer.getIvaCategory().name(), customer);
+		super(order);
 		products = order.getProductsDetail();
-		double total = order.getTotal();
-		this.footer = new Footer(total, total * customer.getIvaCategory().getPercentage());
+		totalIVA = footer.getTotal() * order.getCustomer().getIvaCategory().getPercentage();
+	}
+	
+	public double getTotalIVA() 
+	{
+		return totalIVA;
 	}
 
-	public Header getHeader() 
+	@Override
+	public double bill() 
 	{
-		return header;
-	}
-
-	public Map<Product, Detail> getProducts() 
-	{
-		return products;
-	}
-
-	public Footer getFooter() 
-	{
-		return footer;
+		return footer.getTotal();
 	}
 
 	@Override
 	public String toString() 
 	{
-		return header + printProducts() + footer;
+		return header + productsDetailsToString() + footer + "\tTotal IVA: $" + totalIVA;
 	}
 	
-	private String printProducts()
+	private String productsDetailsToString()
 	{
-		String productsList = "";
+		String productsDetails = "------------ Detalle ------------\n";
 		Iterator<Map.Entry<Product, Detail>> iterator = products.entrySet().iterator();
 		
 		while (iterator.hasNext()) 
 		{
 			Map.Entry<Product, Detail> pair = (Map.Entry<Product, Detail>) iterator.next();
-			productsList += pair.getKey() + "\n" + pair.getValue() + "\n";
+			productsDetails += pair.getKey() + "\t" + pair.getValue() + "\n";
 		}
 		
-		return productsList;
+		return productsDetails;
 	}
 }

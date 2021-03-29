@@ -53,8 +53,8 @@ public class Detail
 	@Override
 	public String toString() 
 	{
-		return "Precio Unitario: " + unitPrice + "\nCantidad: " + quantity + "\n% IVA: " 
-				+ porcentageCustomerCategory + "\nPrecio de Venta: " + sellingPrice
-				+ "\nPrecio Neto: " + netPrice + "\nMonto de IVA: " + ivaAmount;
+		return "Precio Unitario: $" + unitPrice + "\nCantidad: " + quantity 
+				+ "\tPrecio Neto: $" + netPrice + "\nIVA: " + porcentageCustomerCategory 
+				+ "%\tPrecio de Venta: $" + sellingPrice + "\nMonto de IVA: $" + ivaAmount;
 	}
 }
