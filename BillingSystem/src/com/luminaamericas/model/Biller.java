@@ -127,6 +127,6 @@ public class Biller implements IBiller
 	@Override
 	public void generateDailyReport() 
 	{
-		ReportGenerator.generate(transactions.values());
+		ReportGenerator.getGenerator().generate(transactions.values());
 	}
 }

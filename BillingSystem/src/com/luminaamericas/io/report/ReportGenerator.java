@@ -12,7 +12,21 @@ import com.luminaamericas.model.invoice.AbstractInvoice;
 
 public class ReportGenerator 
 {
-	public static void generate(Collection<AbstractInvoice> invoices)
+	private static ReportGenerator generator;
+	
+	private ReportGenerator() {}
+	
+	public static ReportGenerator getGenerator()
+	{
+		if(generator == null)
+		{
+			return new ReportGenerator();
+		}
+		
+		return generator;
+	}
+	
+	public void generate(Collection<AbstractInvoice> invoices)
 	{
 		FileWriter writer;
 		try 
@@ -43,7 +57,7 @@ public class ReportGenerator
 		}
 	}
 	
-	private static File createFile()
+	private File createFile()
 	{
 		File directory = new File("reports");
 		File fileName = new File(new SimpleDateFormat("dd-MM-yyyy").format(new Date()) 
