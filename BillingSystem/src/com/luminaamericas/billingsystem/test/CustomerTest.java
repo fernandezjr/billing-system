@@ -1,9 +1,9 @@
-package com.luminaamericas.test;
+package com.luminaamericas.billingsystem.test;
 
-import com.luminaamericas.model.entity.Address;
-import com.luminaamericas.model.entity.Customer;
-import com.luminaamericas.model.entity.IdType;
-import com.luminaamericas.model.entity.IvaCategory;
+//import com.luminaamericas.billingsystem.model.entity.Address;
+//import com.luminaamericas.billingsystem.model.entity.Customer;
+//import com.luminaamericas.billingsystem.model.entity.IdType;
+//import com.luminaamericas.billingsystem.model.entity.IvaCategory;
 
 public class CustomerTest 
 {

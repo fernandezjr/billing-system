@@ -1,4 +1,4 @@
-package com.luminaamericas.model.invoice;
+package com.luminaamericas.billingsystem.model.invoice;
 
 public class Detail 
 {

@@ -1,4 +1,4 @@
-package com.luminaamericas.test;
+package com.luminaamericas.billingsystem.test;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,19 +6,20 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import com.luminaamericas.model.Biller;
-import com.luminaamericas.model.IBiller;
-import com.luminaamericas.model.OrderNotFoundException;
-import com.luminaamericas.model.entity.Address;
-import com.luminaamericas.model.entity.Customer;
-import com.luminaamericas.model.entity.IdType;
-import com.luminaamericas.model.entity.IvaCategory;
-import com.luminaamericas.model.entity.Order;
-import com.luminaamericas.model.entity.Product;
+import com.luminaamericas.billingsystem.model.Biller;
+import com.luminaamericas.billingsystem.model.IBiller;
+import com.luminaamericas.billingsystem.model.NoTransactionsException;
+import com.luminaamericas.billingsystem.model.OrderNotFoundException;
+import com.luminaamericas.billingsystem.model.entity.Address;
+import com.luminaamericas.billingsystem.model.entity.Customer;
+import com.luminaamericas.billingsystem.model.entity.IdType;
+import com.luminaamericas.billingsystem.model.entity.IvaCategory;
+import com.luminaamericas.billingsystem.model.entity.Order;
+import com.luminaamericas.billingsystem.model.entity.Product;
 
 public class BillerTest 
 {
-	public static void main(String[] args) throws OrderNotFoundException 
+	public static void main(String[] args) throws OrderNotFoundException, NoTransactionsException 
 	{
 		Product rice = new Product(1, "Arroz Arcor 500 grs", 55);
 		Product water = new Product(2, "Agua Villavicencio 2L", 90.50);

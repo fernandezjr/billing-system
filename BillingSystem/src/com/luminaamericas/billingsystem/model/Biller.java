@@ -1,17 +1,18 @@
-package com.luminaamericas.model;
+package com.luminaamericas.billingsystem.model;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.luminaamericas.io.report.ReportGenerator;
-import com.luminaamericas.model.entity.InvoicedOrder;
-import com.luminaamericas.model.entity.Order;
-import com.luminaamericas.model.entity.PendingOrder;
-import com.luminaamericas.model.invoice.AbstractInvoice;
-import com.luminaamericas.model.invoice.Invoice;
-import com.luminaamericas.model.invoice.NullInvoice;
+import com.luminaamericas.billingsystem.io.report.ReportGenerationException;
+import com.luminaamericas.billingsystem.io.report.ReportGenerator;
+import com.luminaamericas.billingsystem.model.entity.InvoicedOrder;
+import com.luminaamericas.billingsystem.model.entity.Order;
+import com.luminaamericas.billingsystem.model.entity.PendingOrder;
+import com.luminaamericas.billingsystem.model.invoice.AbstractInvoice;
+import com.luminaamericas.billingsystem.model.invoice.Invoice;
+import com.luminaamericas.billingsystem.model.invoice.NullInvoice;
 
 public class Biller implements IBiller 
 {
@@ -31,7 +32,6 @@ public class Biller implements IBiller
 		return takings;
 	}
 
-	@Override
 	public void printOrders() 
 	{
 		Iterator<Map.Entry<Order, AbstractInvoice>> iterator = transactions.entrySet().iterator();
@@ -46,8 +46,10 @@ public class Biller implements IBiller
 	}
 
 	@Override
-	public void bill() 
+	public void bill() throws NoTransactionsException
 	{
+		checkEmptyTransactions();
+		
 		Iterator<Map.Entry<Order, AbstractInvoice>> iterator = transactions.entrySet().iterator();
 		
 		while(iterator.hasNext())
@@ -63,6 +65,14 @@ public class Biller implements IBiller
 		}
 		
 		removeNullInvoices();
+	}
+	
+	private void checkEmptyTransactions() throws NoTransactionsException
+	{
+		if(transactions.isEmpty())
+		{
+			throw new NoTransactionsException("No se registran transacciones");
+		}
 	}
 	
 	@Override
@@ -89,7 +99,7 @@ public class Biller implements IBiller
 		}
 		else 
 		{
-			throw new OrderNotFoundException();
+			throw new OrderNotFoundException("No se encontró la orden especificada");
 		}
 	}
 	
@@ -111,8 +121,10 @@ public class Biller implements IBiller
 	}
 
 	@Override
-	public void printInvoices() 
+	public void printInvoices() throws NoTransactionsException
 	{
+		checkEmptyTransactions();
+		
 		Iterator<Map.Entry<Order, AbstractInvoice>> iterator = transactions.entrySet().iterator();
 		
 		while(iterator.hasNext())
@@ -127,6 +139,13 @@ public class Biller implements IBiller
 	@Override
 	public void generateDailyReport() 
 	{
-		ReportGenerator.getGenerator().generate(transactions.values());
+		try 
+		{
+			ReportGenerator.getGenerator().generate(transactions.values());
+		} 
+		catch (ReportGenerationException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }

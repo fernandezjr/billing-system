@@ -1,4 +1,4 @@
-package com.luminaamericas.model.entity;
+package com.luminaamericas.billingsystem.model.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.luminaamericas.model.invoice.Detail;
+import com.luminaamericas.billingsystem.model.invoice.Detail;
 
 public class Order 
 {

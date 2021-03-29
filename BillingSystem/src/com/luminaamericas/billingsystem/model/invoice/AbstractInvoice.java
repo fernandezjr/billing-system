@@ -1,7 +1,7 @@
-package com.luminaamericas.model.invoice;
+package com.luminaamericas.billingsystem.model.invoice;
 
-import com.luminaamericas.model.entity.Customer;
-import com.luminaamericas.model.entity.Order;
+import com.luminaamericas.billingsystem.model.entity.Customer;
+import com.luminaamericas.billingsystem.model.entity.Order;
 
 public abstract class AbstractInvoice 
 {

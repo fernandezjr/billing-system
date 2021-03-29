@@ -1,10 +1,10 @@
-package com.luminaamericas.model.invoice;
+package com.luminaamericas.billingsystem.model.invoice;
 
 import java.util.Iterator;
 import java.util.Map;
 
-import com.luminaamericas.model.entity.Order;
-import com.luminaamericas.model.entity.Product;
+import com.luminaamericas.billingsystem.model.entity.Order;
+import com.luminaamericas.billingsystem.model.entity.Product;
 
 public class Invoice extends AbstractInvoice
 {

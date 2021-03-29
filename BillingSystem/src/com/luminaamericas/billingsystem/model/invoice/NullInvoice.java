@@ -1,6 +1,6 @@
-package com.luminaamericas.model.invoice;
+package com.luminaamericas.billingsystem.model.invoice;
 
-import com.luminaamericas.model.entity.Order;
+import com.luminaamericas.billingsystem.model.entity.Order;
 
 public class NullInvoice extends AbstractInvoice 
 {

@@ -1,4 +1,4 @@
-package com.luminaamericas.io.report;
+package com.luminaamericas.billingsystem.io.report;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
-import com.luminaamericas.model.invoice.AbstractInvoice;
+import com.luminaamericas.billingsystem.model.invoice.AbstractInvoice;
 
 public class ReportGenerator 
 {
@@ -26,7 +26,7 @@ public class ReportGenerator
 		return generator;
 	}
 	
-	public void generate(Collection<AbstractInvoice> invoices)
+	public void generate(Collection<AbstractInvoice> invoices) throws ReportGenerationException
 	{
 		FileWriter writer;
 		try 
@@ -53,7 +53,7 @@ public class ReportGenerator
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			throw new ReportGenerationException("El reporte no se ha podido generar", e);
 		}
 	}
 	
