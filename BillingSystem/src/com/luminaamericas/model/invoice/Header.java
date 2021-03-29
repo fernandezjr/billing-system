@@ -1,7 +1,9 @@
-package com.luminaamericas.model.entity;
+package com.luminaamericas.model.invoice;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.luminaamericas.model.entity.Customer;
 
 public class Header 
 {

@@ -1,4 +1,4 @@
-package com.luminaamericas.model.entity;
+package com.luminaamericas.model.invoice;
 
 public class Footer 
 {

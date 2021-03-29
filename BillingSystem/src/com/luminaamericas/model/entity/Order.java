@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.luminaamericas.model.invoice.Detail;
+
 public class Order 
 {
 	private int number;

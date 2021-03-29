@@ -1,4 +1,4 @@
-package com.luminaamericas.model.entity;
+package com.luminaamericas.model;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -6,8 +6,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 import com.luminaamericas.io.report.ReportGenerator;
-import com.luminaamericas.model.IBiller;
-import com.luminaamericas.model.OrderNotFoundException;
+import com.luminaamericas.model.entity.InvoicedOrder;
+import com.luminaamericas.model.entity.Order;
+import com.luminaamericas.model.entity.PendingOrder;
+import com.luminaamericas.model.invoice.AbstractInvoice;
+import com.luminaamericas.model.invoice.Invoice;
+import com.luminaamericas.model.invoice.NullInvoice;
 
 public class Biller implements IBiller 
 {

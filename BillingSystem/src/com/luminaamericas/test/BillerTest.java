@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.luminaamericas.model.Biller;
 import com.luminaamericas.model.IBiller;
 import com.luminaamericas.model.OrderNotFoundException;
 import com.luminaamericas.model.entity.Address;
-import com.luminaamericas.model.entity.Biller;
 import com.luminaamericas.model.entity.Customer;
 import com.luminaamericas.model.entity.IdType;
 import com.luminaamericas.model.entity.IvaCategory;

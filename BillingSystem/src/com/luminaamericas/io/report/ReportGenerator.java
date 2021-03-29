@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
-import com.luminaamericas.model.entity.AbstractInvoice;
+import com.luminaamericas.model.invoice.AbstractInvoice;
 
 public class ReportGenerator 
 {

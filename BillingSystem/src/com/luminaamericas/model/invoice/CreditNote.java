@@ -1,4 +1,6 @@
-package com.luminaamericas.model.entity;
+package com.luminaamericas.model.invoice;
+
+import com.luminaamericas.model.entity.Order;
 
 public class CreditNote extends AbstractInvoice 
 {
